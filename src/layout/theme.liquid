@@ -33,20 +33,11 @@
   {% include 'social-meta-tags' %}
   {% include 'style-tags', layout: 'theme' %}
   {% include 'css-variables' %}
-
-  <script>
-    document.documentElement.className = document.documentElement.className.replace('no-js', '');
-
-    window.theme = {
-      strings: {
-        addToCart: {{ 'products.product.add_to_cart' | t | json }},
-        soldOut: {{ 'products.product.sold_out' | t | json }},
-        unavailable: {{ 'products.product.unavailable' | t | json }}
-      },
-      moneyFormat: {{ shop.money_format | json }}
-    };
-  </script>
-
+  {% comment %} Shipping Calculator {% endcomment %}
+  {% if template.name == 'cart' %}
+    {{ '/services/javascripts/countries.js' | script_tag }}
+  {% endif %}
+  {% include 'shop-window' %}
   {% include 'script-tags', layout: 'theme' %}
 
   {{ content_for_header }}

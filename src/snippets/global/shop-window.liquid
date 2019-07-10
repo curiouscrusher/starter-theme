@@ -1,0 +1,61 @@
+{% comment %}
+    Global JS Data
+{% endcomment %}
+
+<script data-shop-api>
+  document.documentElement.className = document.documentElement.className.replace('no-js', '');
+
+  window.theme = {
+    allCountryOptionTags: {{ country_option_tags | json }},
+    strings: {
+      addToCart: {{ 'products.product.add_to_cart' | t | json }},
+      soldOut: {{ 'products.product.sold_out' | t | json }},
+      unavailable: {{ 'products.product.unavailable' | t | json }}
+    },
+    moneyFormat: {{ shop.money_format | json }},
+    id: {{ theme.id | json }},
+    shopName: {{ shop.name | json }},
+    assetVersion: {{ 'theSplit' | asset_url | split: 'theSplit' | last | json }},
+  };
+
+  {% if template.directory == 'customers' %}
+    theme.allCountryOptionTags = {{ all_country_option_tags | json }};
+  {% endif %}
+
+
+  window.store = {
+      product: {{ product | json }},
+      collection: {
+        handle: {{ collection.handle | json }},
+      },
+      template: {
+        path: {{ template | json }},
+        name: {{ template.name | json }},
+        alternate: {{ template.suffix | json }},
+      },
+      blogs: {
+        title: {{ blog.title | json }},
+        handle: {{ blog.handle | json }},
+        id: {{ blog.id | json }},
+        url: {{ blog.url | json }},
+        articles: {
+          allArticles: {{ blog.articles | json }},
+          articleCount: {{ blog.articles_count | json }},
+          nextArticle: {{ blog.next_article | json }},
+          prevArticle: {{ blog.previous_article | json }},
+        },
+        tags: [
+          {
+            handle: {{ 'all' | json }},
+            label: {{ 'All Posts' | json }}
+          },
+          {% for tag in blog.all_tags %}
+          {
+            handle: {{ tag | handleize | json }},
+            label: {{ tag | capitalize | json }},
+          },
+          {% endfor %}
+        ],
+      },
+  };
+</script>

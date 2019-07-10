@@ -7,6 +7,11 @@
     "color-no-hex": null,
     "selector-class-pattern": null,
     "selector-no-qualifying-type": null,
-    "selector-max-type": null
+    "selector-max-type": null,
+    "selector-max-class": 3,
+    "selector-max-combinators": 3,
+    "selector-max-specificity": "1,3,1",
+    "selector-id-pattern": null,
+    "selector-max-id": 1,
   }
 }

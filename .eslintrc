@@ -1,19 +1,25 @@
 {
   "extends": [
-    "plugin:shopify/esnext",
     "plugin:shopify/jquery"
   ],
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaVersion": 2019,
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
   "env": {
-    "jest": true
+    "jest": true,
+    "es6": true,
   },
   "rules": {
-    "babel/no-invalid-this": 0,
-    "import/no-anonymous-default-export": 0,
-    "import/no-unresolved": ["error", {"ignore": ["^jquery"]}],
     "no-alert": 0,
     "no-console": 0,
-    "no-new": 0,
-    "node/shebang": 0
+    "comma-dangle": [
+      "off",
+      "only-multiline"
+    ]
   },
   "globals": {
     "document": true,

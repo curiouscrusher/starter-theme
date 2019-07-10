@@ -1,4 +1,16 @@
 {
-  "presets": ["shopify/web"],
-  "plugins": ["transform-async-to-generator"]
+  "presets": [
+    "shopify/web",
+    "react",
+    ["env", {
+      "targets": {
+        "browsers": ["last 3 major versions", "safari >= 9", "IE 11"]
+      }
+    }]
+  ],
+  "plugins": [
+    ["transform-async-to-generator"],
+    ["transform-es2015-spread"],
+    ["transform-class-properties"],
+  ]
 }
